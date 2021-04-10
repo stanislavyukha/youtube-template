@@ -73,9 +73,21 @@ const swiper3 = new Swiper('.channel-slider-3', {
 
 const searchMobileBtn = document.querySelector('.mobile-search');
 const inputGroup = document.querySelector('.input-group');
+const userAvatar = document.querySelector('.user');
+const searchInput = document.querySelector('.input-search');
 
 searchMobileBtn.addEventListener('click', () => {
   inputGroup.classList.toggle('is-open');
+
+  userAvatar.classList.add('user-search');
+});
+
+searchInput.addEventListener('blur', () => {
+  if (document.documentElement.scrollWidth <= 640) {
+    inputGroup.classList.toggle('is-open');
+    searchMobileBtn.style.display = 'block';
+    userAvatar.classList.remove('user-search');
+  }
 });
 
 if (document.documentElement.scrollWidth <= 640) {
